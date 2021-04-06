@@ -26,8 +26,17 @@ public class MaxHeap<T extends Comparable<? super T>>
         integrityOK = true;
     }
 
+    public MaxHeap(T[] entries){
+        this(entries.length);
+        lastIndex = entries.length;
+        for (int index=0; index<entries.length;index++)
+            heap[index + 1] = entries[index];
+        for (int rootIndex=lastIndex/2; rootIndex>0;rootIndex--)
+            reheap(rootIndex);
+    }
+
     public T getMax() {
-        checkInitialization();
+        checkIntegrity();
         T root = null;
         if (!isEmpty())
             root = heap[1];
@@ -43,7 +52,7 @@ public class MaxHeap<T extends Comparable<? super T>>
     }
 
     public void clear() {
-        checkInitialization();
+        checkIntegrity();
         while (lastIndex > -1) {
             heap[lastIndex] = null;
             lastIndex--;
@@ -52,7 +61,7 @@ public class MaxHeap<T extends Comparable<? super T>>
     }
 
     public void add(T newEntry) {
-        checkInitialization();
+        checkIntegrity();
         int newIndex = lastIndex + 1;
         int parentIndex = newIndex / 2;
         while ((parentIndex > 0) && newEntry.compareTo(heap[parentIndex]) > 0) {
@@ -66,7 +75,7 @@ public class MaxHeap<T extends Comparable<? super T>>
     }
 
     public T removeMax() {
-        checkInitialization();
+        checkIntegrity();
         T root = null;
         if(!isEmpty())
         {
@@ -97,15 +106,6 @@ public class MaxHeap<T extends Comparable<? super T>>
                 done = true;
         }
         heap[rootIndex] = orphan;
-    }
-
-    public MaxHeap(T[] entries){
-        this(entries.length);
-        assert initialized = true;
-        for (int index=0; index<entries.length;index++)
-            heap[index + 1] = entries[index];
-        for (int rootIndex=lastIndex/2; rootIndex>0;rootIndex--)
-            reheap(rootIndex);
     }
 
     // Throws an exception if the client requests a capacity that is too large.
