@@ -23,7 +23,7 @@ public class MaxHeap<T extends Comparable<? super T>>
         T[] tempHeap = (T[]) new Comparable[initialCapacity + 1];
         heap = tempHeap;
         lastIndex = 0;
-        initialized = true;
+        integrityOK = true;
     }
 
     public T getMax() {
