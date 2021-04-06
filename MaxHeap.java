@@ -10,6 +10,7 @@ public class MaxHeap<T extends Comparable<? super T>>
     private boolean initialized = false;
     private static final int DEFAULT_CAPACITY = 25;
     private static final int MAX_CAPACITY = 10000;
+    private boolean integrityOK = false;
 
     public MaxHeap() {
         this(DEFAULT_CAPACITY);
@@ -118,4 +119,11 @@ public class MaxHeap<T extends Comparable<? super T>>
                     "capacity exeeds allowed " +
                     "maximum of " + MAX_CAPACITY);
     } // end checkCapacity
+
+    // Throws an exception if this object is not initialized.
+    private void checkIntegrity()
+    {
+        if (!integrityOK)
+            throw new SecurityException("MaxHeap object is corrupt.");
+    } // end checkIntegrity
 }
