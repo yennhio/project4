@@ -1,6 +1,6 @@
 
 
-public interface MaxHeapInterface<T>
+public interface MaxHeapInterface<T extends Comparable <? super T>>
 {
     public void add(T newEntry);
     public T removeMax();
