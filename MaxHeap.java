@@ -83,6 +83,11 @@ public class MaxHeap<T extends Comparable<? super T>>
     }
 
     public MaxHeap(T[] entries){
-        
+        this(entries.length);
+        assert initialized = true;
+        for (int index=0; index<entries.length;index++)
+            heap[index + 1] = entries[index];
+        for (int rootIndex=lastIndex/2; rootIndex>0;rootIndex--)
+            reheap(rootIndex);
     }
 }
