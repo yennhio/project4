@@ -109,4 +109,13 @@ public class MaxHeap<T extends Comparable<? super T>>
         for (int rootIndex=lastIndex/2; rootIndex>0;rootIndex--)
             reheap(rootIndex);
     }
+
+    // Throws an exception if the client requests a capacity that is too large.
+    private void checkCapacity(int capacity)
+    {
+        if (capacity > MAX_CAPACITY)
+            throw new IllegalStateException("Attempt to create a MaxHeap whose " +
+                    "capacity exeeds allowed " +
+                    "maximum of " + MAX_CAPACITY);
+    } // end checkCapacity
 }
