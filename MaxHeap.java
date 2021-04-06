@@ -1,9 +1,9 @@
 import java.util.Arrays;
 
 public class MaxHeap<T extends Comparable<? super T>>
-                                implements MaxHeapInterface<T>
+                                implements MaxHeapInterface<T> 
 {
-    private [T] heap;
+    private T[] heap;
     private int lastIndex;
     private boolean initialized = false;
     private static final int DEFAULT_CAPACITY = 25;
@@ -61,5 +61,28 @@ public class MaxHeap<T extends Comparable<? super T>>
         return root;
     }
 
-    private void reheap(int rootIndex)
+    private void reheap(int rootIndex) {
+        boolean done = false;
+        T orphan = heap[rootIndex];
+        int leftChildIndex = 2 * rootIndex;
+        while (!done && (leftChildIndex <= lastIndex)) {
+            int largerChildIndex = leftChildIndex;
+            int rightChildIndex = leftChildIndex + 1;
+            if ((rightChildIndex <= lastIndex) && heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0) {
+                largerChildIndex = rightChildIndex;
+            }
+            if (orphan.compareTo(heap[largerChildIndex]) < 0) {
+                heap[rootIndex] = heap[largerChildIndex];
+                rootIndex = largerChildIndex;
+                leftChildIndex = 2 * rootIndex;
+            }
+            else
+                done = true;
+        }
+        heap[rootIndex] = orphan;
+    }
+
+    public MaxHeap(T[] entries){
+        
+    }
 }
