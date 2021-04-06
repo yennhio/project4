@@ -1,13 +1,10 @@
 import java.util.Arrays;
 
-import javax.naming.ldap.InitialLdapContext;
-
 public class MaxHeap<T extends Comparable<? super T>>
                                 implements MaxHeapInterface<T> 
 {
     private T[] heap;
     private int lastIndex;
-    private boolean initialized = false;
     private static final int DEFAULT_CAPACITY = 25;
     private static final int MAX_CAPACITY = 10000;
     private boolean integrityOK = false;
@@ -126,4 +123,14 @@ public class MaxHeap<T extends Comparable<? super T>>
         if (!integrityOK)
             throw new SecurityException("MaxHeap object is corrupt.");
     } // end checkIntegrity
+
+    private void ensureCapacity()
+    {
+        if (lastIndex >= heap.length)
+        {
+            int newCapacity = 2 * (heap.length - 1);
+            checkCapacity(newCapacity);
+            heap = Arrays.copyOf(heap, newCapacity);
+        } // end if
+    } // end ensureCapacity
 }
