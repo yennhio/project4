@@ -25,6 +25,13 @@ public class MaxHeapClient<T> {
     }
 
     System.out.println(Arrays.toString(original));
+
+    MaxHeapInterface<Integer> first = new MaxHeap<Integer>();
+    for (int j=0; j<original.length;j++)
+      first.add(original[j]);
+    System.out.println(first);
+
+    first.removeMax();
     
     try {
       File myObj = new File("answer.txt");
@@ -48,14 +55,6 @@ public class MaxHeapClient<T> {
       e.printStackTrace();
     }
 
-    
-    MaxHeapInterface<Integer> first = new MaxHeap<Integer>();
-    for (int j=0; j<original.length;j++)
-      first.add(original[j]);
-
-    first.removeMax();
-
-    System.out.println(first); 
   }
 
 }
