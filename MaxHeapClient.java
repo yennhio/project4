@@ -5,13 +5,15 @@ import java.util.Scanner; // Import the Scanner class to read text files
 
 public class MaxHeapClient<T> {
   public static void main(String[] args) {
+    int[] original = new int[6];    
+    int i = 0;
     try {
-        unsorted = []
       File myObj = new File("test.txt");
       Scanner myReader = new Scanner(myObj);
-      while (myReader.hasNextLine()) {
-        String data = myReader.nextLine();
-        System.out.println(data);
+      while (myReader.hasNextInt()) {
+        int data = myReader.nextInt();
+        original[i] = data;
+        i++;
       }
 
       myReader.close();
@@ -19,6 +21,8 @@ public class MaxHeapClient<T> {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
+
+    System.out.println(Arrays.toString(original));
 
   }
 }
