@@ -26,7 +26,6 @@ public class MaxHeap<T extends Comparable<? super T>>
         integrityOK = true;
     }
 
-
     public MaxHeap(T[] entries){
         this(entries.length);
         lastIndex = entries.length;
@@ -34,6 +33,15 @@ public class MaxHeap<T extends Comparable<? super T>>
             heap[index + 1] = entries[index];
         for (int rootIndex=lastIndex/2; rootIndex>0;rootIndex--)
             reheap(rootIndex);
+    }
+
+    public T[] toArray() {
+        @SuppressWarnings ("unchecked")
+        T[] result = (T[]) new Object[lastIndex + 1];
+
+        for (int i=0; i<lastIndex+1;i++)
+            result[i] = heap[i];
+        return result;
     }
 
     public T getMax() {
@@ -108,6 +116,8 @@ public class MaxHeap<T extends Comparable<? super T>>
         }
         heap[rootIndex] = orphan;
     }
+
+    
 
     // Throws an exception if the client requests a capacity that is too large.
     private void checkCapacity(int capacity)
