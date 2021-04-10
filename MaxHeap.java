@@ -37,7 +37,7 @@ public class MaxHeap<T extends Comparable<? super T>>
 
     public T[] toArray() {
         @SuppressWarnings ("unchecked")
-        T[] result = (T[]) new Object[lastIndex + 1];
+        T[] result = (T[]) new Comparable[lastIndex + 1];
 
         for (int i=0; i<lastIndex+1;i++)
             result[i] = heap[i];
