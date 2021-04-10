@@ -30,6 +30,8 @@ public class MaxHeapClient<T> {
     for (int j=0; j<original.length;j++)
       first.add(original[j]);
   
+    first.toArray();
+
     try {
       File myObj = new File("answer.txt");
       if (myObj.createNewFile()) {
@@ -51,9 +53,6 @@ public class MaxHeapClient<T> {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
-
-    MaxHeapInterface<Integer> second = new MaxHeap<>(new int[] original);
-
     
   }
 
