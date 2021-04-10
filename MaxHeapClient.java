@@ -29,10 +29,7 @@ public class MaxHeapClient<T> {
     MaxHeapInterface<Integer> first = new MaxHeap<Integer>();
     for (int j=0; j<original.length;j++)
       first.add(original[j]);
-    System.out.println(first);
-
-    first.removeMax();
-    
+  
     try {
       File myObj = new File("answer.txt");
       if (myObj.createNewFile()) {
@@ -55,6 +52,9 @@ public class MaxHeapClient<T> {
       e.printStackTrace();
     }
 
+    MaxHeapInterface<Integer> second = new MaxHeap<>(new int[] original);
+
+    
   }
 
 }

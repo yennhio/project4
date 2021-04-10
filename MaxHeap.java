@@ -26,6 +26,7 @@ public class MaxHeap<T extends Comparable<? super T>>
         integrityOK = true;
     }
 
+
     public MaxHeap(T[] entries){
         this(entries.length);
         lastIndex = entries.length;
