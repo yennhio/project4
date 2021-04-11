@@ -8,6 +8,7 @@ public class MaxHeap<T extends Comparable<? super T>>
     private static final int DEFAULT_CAPACITY = 25;
     private static final int MAX_CAPACITY = 10000;
     private boolean integrityOK = false;
+    private int count;
 
     public MaxHeap() {
         this(DEFAULT_CAPACITY);
@@ -35,18 +36,53 @@ public class MaxHeap<T extends Comparable<? super T>>
             reheap(rootIndex);
     }
 
-    public void toArray() {
+    public String toArray() {
         @SuppressWarnings ("unchecked")
         T[] result = (T[]) new Comparable[lastIndex + 1];
 
         for (int i=0; i<result.length;i++)
             result[i] = heap[i];
-        int i = 2;
-        System.out.print("Heap built using sequential insertions: " + result[1] + ", ");
-        while (i<result.length) {
-        System.out.print(result[i] + ", ");
-        i++;
+        
+        String sorted = result[1] + ", " + result[2] + ", " + result[3] + ", " 
+                        + result[4]+ ", " + result[5] + ", " + result[6]+ ", " 
+                        + result[7] + ", " + result[8] + ", " + result[9] + ", " 
+                        + result[10] + ",...";
+        String statement = "Heap built using sequential insertions: " + sorted;
+        
+        return statement;
     }
+
+    public String keepCount() {
+        String times = "Number of swaps in the heap creation: " + String.valueOf(count);
+        return times;
+    }
+
+    public void add(T newEntry) {
+        checkIntegrity();
+        int newIndex = lastIndex + 1;
+        int parentIndex = newIndex / 2;
+        while ((parentIndex > 0) && newEntry.compareTo(heap[parentIndex]) > 0) {
+            heap[newIndex] = heap[parentIndex];
+            newIndex = parentIndex;
+            parentIndex = newIndex / 2;
+            count += 1;
+        }
+        heap[newIndex] = newEntry;
+        lastIndex++;
+        ensureCapacity();
+    }
+
+    public T removeMax() {
+        checkIntegrity();
+        T root = null;
+        if(!isEmpty())
+        {
+            root = heap[1];
+            heap[1] = heap[lastIndex];
+            lastIndex--;
+            reheap(1);
+        }
+        return root;
     }
 
     public T getMax() {
@@ -74,32 +110,6 @@ public class MaxHeap<T extends Comparable<? super T>>
         lastIndex = 0;
     }
 
-    public void add(T newEntry) {
-        checkIntegrity();
-        int newIndex = lastIndex + 1;
-        int parentIndex = newIndex / 2;
-        while ((parentIndex > 0) && newEntry.compareTo(heap[parentIndex]) > 0) {
-            heap[newIndex] = heap[parentIndex];
-            newIndex = parentIndex;
-            parentIndex = newIndex / 2;
-        }
-        heap[newIndex] = newEntry;
-        lastIndex++;
-        ensureCapacity();
-    }
-
-    public T removeMax() {
-        checkIntegrity();
-        T root = null;
-        if(!isEmpty())
-        {
-            root = heap[1];
-            heap[1] = heap[lastIndex];
-            lastIndex--;
-            reheap(1);
-        }
-        return root;
-    }
 
     private void reheap(int rootIndex) {
         boolean done = false;

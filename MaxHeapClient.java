@@ -7,7 +7,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 
 public class MaxHeapClient<T> {
   public static void main(String[] args) {
-    int[] original = new int[6];
+    int[] original = new int[10];
     int i = 0;
     try {
       File myObj = new File("test.txt");
@@ -30,7 +30,16 @@ public class MaxHeapClient<T> {
     for (int j=0; j<original.length;j++)
       first.add(original[j]);
   
-    first.toArray();
+    String sequential1;
+    sequential1 = first.toArray();
+
+    String count = first.keepCount();
+
+    for (int j=0; j<original.length;j++)
+      first.removeMax();
+
+    String sequential2;
+    sequential2 = first.toArray();
 
     try {
       File myObj = new File("answer.txt");
@@ -46,13 +55,14 @@ public class MaxHeapClient<T> {
 
     try {
       FileWriter myWriter = new FileWriter("answer.txt");
-      myWriter.write("hello");
+      myWriter.write(sequential1 + "\n" + count + "\n" + sequential2);
       myWriter.close();
       System.out.println("Successfully wrote to the file.");
     } catch (IOException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
+    
     
   }
 
