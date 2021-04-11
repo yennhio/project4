@@ -47,7 +47,7 @@ public class MaxHeap<T extends Comparable<? super T>>
                         + result[4]+ ", " + result[5] + ", " + result[6]+ ", " 
                         + result[7] + ", " + result[8] + ", " + result[9] + ", " 
                         + result[10] + ",...";
-        String statement = "Heap built using sequential insertions: " + sorted;
+        String statement = sorted;
         
         return statement;
     }
