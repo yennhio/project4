@@ -30,8 +30,7 @@ public class MaxHeapClient<T> {
     for (int j=0; j<original.length;j++)
       first.add(original[j]);
   
-    System.out.println(Arrays.toString((first.toArray())));
-    
+    first.toArray();
 
     try {
       File myObj = new File("answer.txt");
