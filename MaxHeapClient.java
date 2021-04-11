@@ -7,10 +7,10 @@ import java.util.Scanner; // Import the Scanner class to read text files
 
 public class MaxHeapClient<T> {
   public static void main(String[] args) {
-    int[] original = new int[21];
+    int[] original = new int[100];
     int i = 0;
     try {
-      File myObj = new File("test.txt");
+      File myObj = new File("data_sorted.txt");
       Scanner myReader = new Scanner(myObj);
       while (myReader.hasNextInt()) {
         int data = myReader.nextInt();
@@ -23,8 +23,6 @@ public class MaxHeapClient<T> {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
-
-    System.out.println(Arrays.toString(original));
 
     MaxHeapInterface<Integer> first = new MaxHeap<Integer>();
     for (int j=0; j<original.length;j++)
@@ -39,7 +37,7 @@ public class MaxHeapClient<T> {
       first.removeMax();
 
     String sequential2;
-    sequential2 = first.toArray();
+    sequential2 = "Heap after 10 removals: " + first.toArray();
 
     try {
       File myObj = new File("answer.txt");

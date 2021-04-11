@@ -11,7 +11,7 @@ public class MaxHeap<T extends Comparable<? super T>>
     private int count;
 
     public MaxHeap() {
-        this(DEFAULT_CAPACITY);
+        this(MAX_CAPACITY);
     }
 
     public MaxHeap(int initialCapacity) {
