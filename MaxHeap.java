@@ -124,11 +124,11 @@ public class MaxHeap<T extends Comparable<? super T>>
                 heap[rootIndex] = heap[largerChildIndex];
                 rootIndex = largerChildIndex;
                 leftChildIndex = 2 * rootIndex;
+                count += 1;
             }
             else
                 done = true;
         }
-        count += 1;
         heap[rootIndex] = orphan;
     }
 
