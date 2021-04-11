@@ -60,9 +60,6 @@ public class MaxHeapClient<T> {
     for (int u=0; u<original2.length;u++)
       second.add(original2[u]);
     
-    System.out.println(Arrays.toString(original2));
-    System.out.println(second.toArray());
-  
     String sequential2;
     sequential2 = "Heap built using sequential insertions: " + second.toArray();
 
@@ -92,9 +89,6 @@ public class MaxHeapClient<T> {
     }
 
     MaxHeapInterface<Integer> third = new MaxHeap<Integer>(original3);
-
-    System.out.println(Arrays.toString(original3));
-    System.out.println(third.toArray());
   
     String optimal;
     optimal = "Heap built using optimal method: " + third.toArray();
@@ -125,9 +119,6 @@ public class MaxHeapClient<T> {
     }
 
     MaxHeapInterface<Integer> fourth = new MaxHeap<Integer>(original4);
-
-    System.out.println(Arrays.toString(original4));
-    System.out.println(fourth.toArray());
   
     String optimal2;
     optimal2 = "Heap built using optimal method: " + fourth.toArray();
