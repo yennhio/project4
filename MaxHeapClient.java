@@ -7,7 +7,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 
 public class MaxHeapClient<T> {
   public static void main(String[] args) {
-    int[] original = new int[10];
+    int[] original = new int[21];
     int i = 0;
     try {
       File myObj = new File("test.txt");
@@ -31,11 +31,11 @@ public class MaxHeapClient<T> {
       first.add(original[j]);
   
     String sequential1;
-    sequential1 = first.toArray();
+    sequential1 = "Heap built using sequential insertions: " + first.toArray();
 
     String count = first.keepCount();
 
-    for (int j=0; j<original.length;j++)
+    for (int j=0; j<10;j++)
       first.removeMax();
 
     String sequential2;
