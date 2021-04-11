@@ -41,9 +41,10 @@ public class MaxHeap<T extends Comparable<? super T>>
 
         for (int i=0; i<result.length;i++)
             result[i] = heap[i];
-        int i=0;
-        while (i<10) {
-        System.out.println(result[i]);
+        int i = 2;
+        System.out.print("Heap built using sequential insertions: " + result[1] + ", ");
+        while (i<result.length) {
+        System.out.print(result[i] + ", ");
         i++;
     }
     }
