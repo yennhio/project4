@@ -35,13 +35,17 @@ public class MaxHeap<T extends Comparable<? super T>>
             reheap(rootIndex);
     }
 
-    public T[] toArray() {
+    public void toArray() {
         @SuppressWarnings ("unchecked")
         T[] result = (T[]) new Comparable[lastIndex + 1];
 
-        for (int i=0; i<lastIndex+1;i++)
+        for (int i=0; i<result.length;i++)
             result[i] = heap[i];
-        return result;
+        int i=0;
+        while (i<10) {
+        System.out.println(result[i]);
+        i++;
+    }
     }
 
     public T getMax() {
