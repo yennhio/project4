@@ -110,7 +110,6 @@ public class MaxHeap<T extends Comparable<? super T>>
         lastIndex = 0;
     }
 
-
     private void reheap(int rootIndex) {
         boolean done = false;
         T orphan = heap[rootIndex];
@@ -120,11 +119,13 @@ public class MaxHeap<T extends Comparable<? super T>>
             int rightChildIndex = leftChildIndex + 1;
             if ((rightChildIndex <= lastIndex) && heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0) {
                 largerChildIndex = rightChildIndex;
+                count =+ 1;
             }
             if (orphan.compareTo(heap[largerChildIndex]) < 0) {
                 heap[rootIndex] = heap[largerChildIndex];
                 rootIndex = largerChildIndex;
                 leftChildIndex = 2 * rootIndex;
+                count += 1;
             }
             else
                 done = true;

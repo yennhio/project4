@@ -74,6 +74,29 @@ public class MaxHeapClient<T> {
     String sequential4;
     sequential4 = "Heap after 10 removals: " + second.toArray();
 
+    int[] original3 = new int[100];
+    int h = 0;
+    try {
+      File myObj3 = new File("data_sorted.txt");
+      Scanner myReader3 = new Scanner(myObj3);
+      while (myReader3.hasNextInt()) {
+        int data3 = myReader3.nextInt();
+        original3[h] = data3;
+        h++;
+      }
+
+      myReader3.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+
+    MaxHeapInterface<Integer> third = new MaxHeap<Integer>();
+    third.callReheap(original3);
+
+
+    
+
     try {
       File myObj = new File("answer.txt");
       if (myObj.createNewFile()) {
