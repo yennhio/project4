@@ -36,8 +36,8 @@ public class MaxHeapClient<T> {
     for (int j=0; j<10;j++)
       first.removeMax();
 
-    String sequential2;
-    sequential2 = "Heap after 10 removals: " + first.toArray();
+    String removal;
+    removal = "Heap after 10 removals: " + first.toArray();
 
     int[] original2 = new int[100];
     int k = 0;
@@ -63,18 +63,18 @@ public class MaxHeapClient<T> {
     System.out.println(Arrays.toString(original2));
     System.out.println(second.toArray());
   
-    String sequential3;
-    sequential3 = "Heap built using sequential insertions: " + second.toArray();
+    String sequential2;
+    sequential2 = "Heap built using sequential insertions: " + second.toArray();
 
     String count2 = second.keepCount();
 
     for (int j=0; j<10;j++)
       second.removeMax();
 
-    String sequential4;
-    sequential4 = "Heap after 10 removals: " + second.toArray();
+    String removal2;
+    removal2 = "Heap after 10 removals: " + second.toArray();
 
-    int[] original3 = new int[100];
+    Integer[] original3 = new Integer[100];
     int h = 0;
     try {
       File myObj3 = new File("data_sorted.txt");
@@ -91,11 +91,54 @@ public class MaxHeapClient<T> {
       e.printStackTrace();
     }
 
-    MaxHeapInterface<Integer> third = new MaxHeap<Integer>();
-    third.callReheap(original3);
+    MaxHeapInterface<Integer> third = new MaxHeap<Integer>(original3);
 
+    System.out.println(Arrays.toString(original3));
+    System.out.println(third.toArray());
+  
+    String optimal;
+    optimal = "Heap built using optimal method: " + third.toArray();
 
-    
+    String count3 = third.keepCount();
+
+    for (int j=0; j<10;j++)
+      third.removeMax();
+
+    String removal3;
+    removal3 = "Heap after 10 removals: " + third.toArray();
+
+    Integer[] original4 = new Integer[100];
+    int n = 0;
+    try {
+      File myObj4 = new File("data_random.txt");
+      Scanner myReader4 = new Scanner(myObj4);
+      while (myReader4.hasNextInt()) {
+        int data4 = myReader4.nextInt();
+        original4[n] = data4;
+        n++;
+      }
+
+      myReader4.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+
+    MaxHeapInterface<Integer> fourth = new MaxHeap<Integer>(original4);
+
+    System.out.println(Arrays.toString(original4));
+    System.out.println(fourth.toArray());
+  
+    String optimal2;
+    optimal2 = "Heap built using optimal method: " + fourth.toArray();
+
+    String count4 = fourth.keepCount();
+
+    for (int j=0; j<10;j++)
+      fourth.removeMax();
+
+    String removal4;
+    removal4 = "Heap after 10 removals: " + fourth.toArray();
 
     try {
       File myObj = new File("answer.txt");
@@ -111,8 +154,10 @@ public class MaxHeapClient<T> {
 
     try {
       FileWriter myWriter = new FileWriter("answer.txt");
-      myWriter.write(sequential1 + "\n" + count + "\n" + sequential2 + "\n\n");
-      myWriter.write(sequential3 + "\n" + count2 + "\n" + sequential4);
+      myWriter.write(sequential1 + "\n" + count + "\n" + removal + "\n\n");
+      myWriter.write(sequential2 + "\n" + count2 + "\n" + removal2 + "\n\n");
+      myWriter.write(optimal + "\n" + count3 + "\n" + removal3 + "\n\n");
+      myWriter.write(optimal2 + "\n" + count4 + "\n" + removal4 + "\n\n");
       myWriter.close();
       System.out.println("Successfully wrote to the file.");
     } catch (IOException e) {
