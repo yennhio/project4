@@ -35,4 +35,12 @@ public class HeapUnitTests {
             assertEquals("Number of swaps in the heap creation: 9", pinetree.keepCount());
        }
 
+       @Test
+       public void testRemoveMax() {
+           pinetree.removeMax();
+           pinetree.removeMax();
+
+           assertEquals("10, 9, 7, 8, 5, 6, 1, 3, 4, 2,...", pinetree.toArray());
+       }
+
 }
