@@ -14,5 +14,12 @@ public class HeapUnitTests {
             assertEquals("9, 8, 5, 6, 7, 1, 4, 0, 3, 2,...", oatmeal.toArray());
         }
 
+        @Test
+        public void testCount() {
+            for (int i=0; i<10; i++)
+                oatmeal.add(i);
+            
+            assertEquals("Number of swaps in the heap creation: 19", oatmeal.keepCount());
+        }
 
 }
