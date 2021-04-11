@@ -8,5 +8,6 @@ public interface MaxHeapInterface<T extends Comparable <? super T>>
     public boolean isEmpty();
     public int getSize();
     public void clear();
-    public void toArray();
+    public String toArray();
+    public String keepCount();
 }
